@@ -1,3 +1,6 @@
+// Code adapted from Derek Molloy's example at:
+// http://derekmolloy.ie/writing-a-linux-kernel-module-part-2-a-character-device/
+
 #include <linux/init.h>		// Macros used to mark up functions e.g. __init __exit
 #include <linux/module.h>	// Core header for loading LKMs into the kernel
 #include <linux/device.h>	// Header to support the kernel Driver Model
@@ -5,7 +8,7 @@
 #include <linux/fs.h>		// Header for the Linux file system support
 #include <asm/uaccess.h>	// Required for the copy to user function
 
-#define  DEVICE_NAME "cdd"	///< The device will appear at /dev/ebbchar using this value
+#define  DEVICE_NAME "cdd"	///< The device will appear at /dev/cdd using this value
 #define  CLASS_NAME  "cdd"	///< The device class -- this is a character device driver
 
 //Basic Queue Start
@@ -69,7 +72,7 @@ get (void)
 
 MODULE_LICENSE ("GPL");		///< The license type
 MODULE_AUTHOR ("Mark McCulloh, Christopher Williams, Kevin Shoults");	///< modinfo
-MODULE_DESCRIPTION ("simple Linux char driver");	///< modinfo
+MODULE_DESCRIPTION ("Simple Linux char driver");	///< modinfo
 MODULE_VERSION ("0.1");		///< modinfo
 
 static int majorNumber;		///< Stores the device number
