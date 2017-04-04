@@ -1,6 +1,11 @@
 // Code adapted from Derek Molloy's example at:
 // http://derekmolloy.ie/writing-a-linux-kernel-module-part-2-a-character-device/
 
+//Overall, the following was changed/added:
+// -Queue added
+// -File operations modified as per the assignment
+// -Names/Variables
+
 #include <linux/init.h>		// Macros used to mark up functions e.g. __init __exit
 #include <linux/module.h>	// Core header for loading LKMs into the kernel
 #include <linux/device.h>	// Header to support the kernel Driver Model
